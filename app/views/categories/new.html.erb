@@ -1,0 +1,9 @@
+<% @category.errors.each do |key, msg| %>
+  <%= msg %>
+<% end %>
+
+<%= form_for @category do |f| %>
+  <%= f.label :name, 'Nome:' %>
+  <%= f.text_field :name %>
+  <%= f.submit 'Criar Categoria' %>
+<% end %>
