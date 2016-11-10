@@ -4,7 +4,7 @@
   <p>Email:<%= @company.mail %></p>
   <p>Telefone:<%= @company.phone %></p>
     <% if @company.premium? %>
-      <img src="/assets/images/estrela.png" alt="estrela">
+      <%= image_tag 'estrela.png' %>
     <% end %>
 </section>
 <%= render(@company.jobs) || 'Nenhuma vaga disponível'%>

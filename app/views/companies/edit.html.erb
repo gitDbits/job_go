@@ -1,7 +1,4 @@
-<% @company.errors.each do |k, msg| %>
-	<%= msg %>
-<% end %>
-<h1>Nova Empresa</h1>
+<h1>Editar Empresa</h1>
 <%= form_for @company do |f| %>
   <%= f.label :name, "Nome:" %>
   <%= f.text_field :name %><br>
@@ -11,6 +8,6 @@
   <%= f.text_field :mail %><br>
   <%= f.label :phone, "Telefone:" %>
   <%= f.text_area :phone %><br>
-  <%= f.submit 'Criar Empresa' %>
+  <%= f.submit 'Atualizar Empresa' %>
 <% end  %>
 <%= link_to 'Voltar', root_path %>
