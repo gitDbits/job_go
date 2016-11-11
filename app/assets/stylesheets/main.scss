@@ -1,7 +1,20 @@
 section {
     border: 1px solid;
     margin-bottom: 1rem;
+    margin-left: 1rem;
     width: 15%;
     padding: 1rem;
     display: block;
+    position: relative;
+    float: left;
+}
+
+.row:before,
+.row:after {
+    content: " ";
+    display: table;
+}
+
+.row:after {
+    clear: both;
 }

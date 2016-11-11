@@ -1,3 +1,6 @@
+<% @company.errors.each do |v, m| %>
+  <%= m %>
+<% end %>
 <h1>Editar Empresa</h1>
 <%= form_for @company do |f| %>
   <%= f.label :name, "Nome:" %>

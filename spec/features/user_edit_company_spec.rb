@@ -18,10 +18,10 @@ feature 'User edit a company' do
   end
 
   scenario 'unsuccessully' do
-      company = Company.create( name: 'Campus Code',
-                            	location: 'São Paulo',
-                            	mail: 'contato@campus.com.br',
-                            	phone: '2369-3476')
+      company = Company.create(name: 'Campus Code',
+                            location: 'São Paulo',
+                            mail: 'contato@campus.com.br',
+                            phone: '2369-3476')
 
       visit edit_company_path(company)
 

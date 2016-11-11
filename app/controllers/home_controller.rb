@@ -5,5 +5,4 @@ class HomeController < ApplicationController
     @categories = Category.all
     @jobs = Job.all
   end
-
 end

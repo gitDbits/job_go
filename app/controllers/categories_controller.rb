@@ -1,20 +1,34 @@
 class CategoriesController < ApplicationController
-
-  def show
-    @category = Category.find(params[:id])
-  end
+  before_action :set_categories, only: [:show, 
+                                        :edit, 
+                                        :update]
 
   def new
     @category = Category.new
   end
-
+  
   def create
     @category = Category.new(category_params)
     if @category.save
       redirect_to @category
     else
-      flash.now[:error] = 'Não foi possível salvar!'
+      flash.now[:error] = 'Erro ao salvar :('
       render :new
+    end
+  end
+
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @category.update(category_params)
+      redirect_to @category
+    else
+      flash.now[:error] = 'Erro ao salvar :('
+      render :edit
     end
   end
 
@@ -24,4 +38,7 @@ class CategoriesController < ApplicationController
       params.require(:category).permit(:name)
     end
 
+    def set_categories
+      @category = Category.find(params[:id])
+    end
 end

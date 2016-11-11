@@ -1,9 +1,11 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update]
-  before_action :set_references, only: [:new, :update, :create, :edit]
-
-  def show
-  end
+  before_action :set_job, only: [ :show, 
+                                  :edit, 
+                                  :update]
+  before_action :set_references, only: [:new, 
+                                        :update,
+                                        :create, 
+                                        :edit]
 
   def new
     @job = Job.new
@@ -18,6 +20,9 @@ class JobsController < ApplicationController
       flash.now[:error] = 'Não foi possível criar a vaga'
       render :new
     end
+  end
+
+  def show
   end
 
   def edit
@@ -35,12 +40,12 @@ class JobsController < ApplicationController
   private
 
     def job_params
-      params.require(:job).permit(  :title,
-                                    :location,
-                                    :category_id,
-                                    :company_id,
-                                    :description,
-                                    :featured)
+      params.require(:job).permit( :title,
+                                   :location,
+                                   :category_id,
+                                   :company_id,
+                                   :description,
+                                   :featured)
     end
 
     def set_job

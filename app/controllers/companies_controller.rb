@@ -1,29 +1,33 @@
 class CompaniesController < ApplicationController
+  before_action :set_companies, only: [:show, 
+                                      :edit,
+                                      :update]
 
-   def new
+  def new
     @company = Company.new
   end
 
   def create
     @company = Company.new(company_params)
-    @company.save
-    redirect_to @company
+    if @company.save
+      redirect_to @company
+    else
+      flash.now[:error] = 'Erro ao salvar :('
+      render :new
+    end
   end
 
   def show
-    @company = Company.find(params[:id])  
   end
 
   def edit
-    @company = Company.find(params[:id])
   end
 
   def update
-    @company = Company.find(params[:id])
     if @company.update(company_params)
       redirect_to @company
-    else 
-      flash.now[:error] = 'Erro ao atualizar as informações da empresa.'
+    else
+      flash.now[:error] = 'Erro ao salvar :('
       render :edit
     end
   end
@@ -31,6 +35,11 @@ class CompaniesController < ApplicationController
   private
 
     def company_params
-      params.require(:company).permit(:name, :location, :mail, :phone)
+      params.require(:company).permit(:name, :location,:mail,:phone)
     end
+
+    def set_companies
+      @company = Company.find(params[:id])  
+    end
+
 end
