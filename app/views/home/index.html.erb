@@ -1,20 +1,37 @@
-<% @jobs.each do |job| %>
-  <% unless job.expired? %>
-    <section>
-      <h1><%= link_to job.title, job %></h1>
-      <p><%= job.company.name %></p>
-      <p><%= job.location %></p>
-      <% if job.featured? %>
-        <p><strong>Destaque</strong></p>
+<div class=jumbotrom align="center">
+  <%= image_tag 'jobgo.jpeg'%>
+  <h1>Afim de uma vaga?</h1>
+  <p class="lead">
+    Encontre a sua vaga na Job GO! 
+  </p>
+  <p>
+    <a class="btn btn-lg btn-primary" 
+      href="./jobs/new" role="button">Criar Vaga</a>
+  </p>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <% @jobs.each do |job| %>
+        <% unless job.expired? %>
+          <h1><%= link_to job.title, job %></h1>
+          <p><%= job.company.name %></p>
+          <p><%= job.location %></p>
+          <% if job.featured? %>
+            <p><strong>Destaque</strong></p>
+          <% end %>
+        <% end %>
       <% end %>
-    </section>
-  <% end %>
-<% end %>
-<section>
-  <% @companies.each do |company| %>
-    <%= link_to company.name, company_path(company) %><br>
-  <% end %>
-  <% @categories.each do |category| %>
-    <%= link_to category.name, category_path(category) %>
-  <% end %>
-</section>
+    </div>
+  </div>
+</div>   
+<div class="container">
+  <div class="row">
+    <% @companies.each do |company| %>
+      <%= link_to company.name, company_path(company) %><br>
+    <% end %>
+    <% @categories.each do |category| %>
+      <%= link_to category.name, category_path(category) %>
+    <% end %>
+ </div>
+</div>
