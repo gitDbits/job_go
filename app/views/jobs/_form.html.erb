@@ -1,21 +1,33 @@
-<form class="form-horizontal">
-<%= form_for @job do |f| %>
-  <%= f.label :title, "Título:" %>
-  <%= f.text_field :title %><br>
-  <%= f.label :location, "Local:" %>
-  <%= f.text_field :location %><br>
-  <%= f.label :category_id, "Categoria:" %>
-  <%= f.collection_select :category_id, 
-    @categories, :id, :name %>
-    <a href="/categories/new">Nova Categoria</a><br>
-  <%= f.label :company_id, "Empresa" %>
-  <%= f.collection_select :company_id, 
-    @companies, :id, :name %>
-    <a href="/companies/new">Nova Empresa</a><br><br>
-  <%= f.label :description, "Descrição:" %>
-  <%= f.text_area :description %><br>
-  <%= f.label :featured, "Destaque" %>
-  <%= f.check_box :featured %>
-  <%= f.submit submit_button %>
-<% end  %>
+<form>
+  <%= form_for @job do |f| %>
+    <div class="form-group">
+      <%= f.label :title, "Título:" %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="form-group">
+      <%= f.label :location, "Local:" %>
+      <%= f.text_field :location %>
+    </div>
+    <div class="form-group">
+      <%= f.label :category_id, "Categoria:" %>
+      <%= f.collection_select :category_id, 
+        @categories, :id, :name %>
+        <a href="/categories/new">Nova Categoria</a>
+    </div>  
+    <div class="form-group">  
+      <%= f.label :company_id, "Empresa" %>
+      <%= f.collection_select :company_id, 
+        @companies, :id, :name %>
+        <a href="/companies/new">Nova Empresa</a>
+    </div>  
+    <div class="form-group">  
+      <%= f.label :description, "Descrição:" %>
+      <%= f.text_area :description %>
+    </div>
+    <div class="form-group">
+      <%= f.label :featured, "Destaque" %>
+      <%= f.check_box :featured %>
+    </div>
+    <%= f.submit submit_button %>
+  <% end %>
 </form>

@@ -1,16 +1,12 @@
 <% @company.errors.each do |v, m| %>
   <%= m %>
 <% end %>
-<h1>Editar Empresa</h1>
-<%= form_for @company do |f| %>
-  <%= f.label :name, "Nome:" %>
-  <%= f.text_field :name %><br>
-  <%= f.label :location, "Local:" %>
-  <%= f.text_field :location %><br>
-  <%= f.label :mail, "Email:" %>
-  <%= f.text_field :mail %><br>
-  <%= f.label :phone, "Telefone:" %>
-  <%= f.text_area :phone %><br>
-  <%= f.submit 'Atualizar Empresa' %>
-<% end  %>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1>Editar Empresa</h1>
+  </div>
+  <div class="panel-body">
+    <%= render partial: 'form', locals: {submit_button: 'Atualizar Empresa'} %>    
+  </div>
+</div>
 <%= link_to 'Voltar', root_path %>
