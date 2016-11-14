@@ -4,9 +4,7 @@
 	<p>Email:<%= @company.mail %></p>
 	<p>Telefone:<%= @company.phone %></p>
 	<% if @company.premium? %>
-  	<%= image_tag 'estrela.png'%>
+		<%= image_tag 'estrela.png'%>
 	<% end %>
 <%= render(@company.jobs) || 'Nenhuma vaga disponível'%>
-<br>
-<br>
 <%= link_to 'Voltar', root_path %>

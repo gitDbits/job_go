@@ -2,7 +2,6 @@ class CompaniesController < ApplicationController
   before_action :set_companies, only: [:show, 
                                       :edit,
                                       :update]
-
   def new
     @company = Company.new
   end
@@ -41,5 +40,4 @@ class CompaniesController < ApplicationController
     def set_companies
       @company = Company.find(params[:id])  
     end
-
 end

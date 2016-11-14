@@ -1,37 +1,50 @@
-<div class=jumbotrom align="center">
-  <%= image_tag 'jobgo.jpeg'%>
-  <h1>Afim de uma vaga?</h1>
-  <p class="lead">
-    Encontre a sua vaga na Job GO! 
-  </p>
-  <p>
-    <a class="btn btn-lg btn-primary" 
-      href="./jobs/new" role="button">Criar Vaga</a>
-  </p>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
+<div class=container>
+  <div class=jumbotrom align="center">
+    <%= image_tag 'jobgo.jpeg'%>
+    <h1>Afim de uma vaga?</h1>
+    <p class="lead">
+      Encontre a sua vaga na Job GO! 
+    </p>
+    <p>
+      <a class="btn btn-lg btn-primary" 
+        href="./jobs/new" role="button">Criar Vaga</a>
+    </p>
+  </div>
+  <div class="container">
+    <div class="row">
       <% @jobs.each do |job| %>
         <% unless job.expired? %>
-          <h1><%= link_to job.title, job %></h1>
-          <p><%= job.company.name %></p>
-          <p><%= job.location %></p>
-          <% if job.featured? %>
-            <p><strong>Destaque</strong></p>
-          <% end %>
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h1><%= link_to job.title, job %></h1>
+                <p><%= job.company.name %></p>
+                <p><%= job.location %></p>
+                <% if job.featured? %>
+                  <p><strong>Destaque</strong></p>
+                <% end %>
+              </div>
+            </div>
+          </div>
         <% end %>
       <% end %>
     </div>
-  </div>
-</div>   
-<div class="container">
-  <div class="row">
     <% @companies.each do |company| %>
-      <%= link_to company.name, company_path(company) %><br>
-      <% end %>
-    <% @categories.each do |category| %>
-      <%= link_to category.name, category_path(category) %>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <% if company.premium? %>
+              <%= image_tag('estrela.png') %>
+            <% end %>
+            <h3><%= link_to company.name, company_path(company) %></h3>
+          </div>
+        </div>
+      </div>
     <% end %>
- </div>
+      
+      <% @categories.each do |category| %>
+        <%= link_to category.name, category_path(category) %>
+      <% end %>
+    
+  </div>
 </div>
