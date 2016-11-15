@@ -1,50 +1,85 @@
 <div class=container>
   <div class=jumbotrom align="center">
-    <%= image_tag('logo.png') %>
+    <a href="http://imgur.com/gsXlKhM">
+      <img src="http://i.imgur.com/gsXlKhM.png" 
+      title="source: imgur.com"/>
+    </a>
     <h1>Afim de uma vaga?</h1>
     <p class="lead">
       Encontre a sua vaga na Job GO! 
     </p>
     <p>
       <a class="btn btn-lg btn-primary" 
-        href="./jobs/new" role="button">Criar Vaga</a>
-    </p>
+      <%= link_to 'Criar Vaga', new_job_path %>
+    </a>
+  </p>
+</div>
+</div>
+<div class="container">
+  <div class="row">
+    <% @jobs.each do |job| %>
+    <% unless job.expired? %>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1><%= link_to job.title, job %></h1>
+          <p><%= job.company.name %></p>
+          <p><%= job.location %></p>
+          <% if job.featured? %>
+          <p><strong>Destaque</strong></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+  <div class="jumbotron">
+    <div class="container" align="left">
+      <h1>Inscreva a sua empresa</h1>
+      <p> Seja o nosso parceiro, os melhores profissionais 
+        estão a um clique de encontrar a sua vaga. 
+        Com apenas algumas informações a sua empresa 
+        estará pronta para o JobGO!
+      </p>
+      <p>
+        <a class="btn btn-primary btn-lg"<%=  link_to 'Criar Empresa', new_company_path %></a>
+      </p>
+      <p align="center">Abaixo a lista das empresas participantes!</p>
+    </div>
   </div>
   <div class="container">
     <div class="row">
-      <% @jobs.each do |job| %>
-        <% unless job.expired? %>
-          <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h1><%= link_to job.title, job %></h1>
-                <p><%= job.company.name %></p>
-                <p><%= job.location %></p>
-                <% if job.featured? %>
-                  <p><strong>Destaque</strong></p>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-    <% @companies.each do |company| %>
+      <% @companies.each do |company| %>
       <div class="col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <% if company.premium? %>
-              <%= image_tag('estrela.png') %>
-            <% end %>
-            <h3><%= link_to company.name, company_path(company) %></h3>
-          </div>
-        </div>
-      </div>
+        <h2>
+          <% if company.premium? %>
+          <%= image_tag('estrela.png', alt: 'premiun') %>
+          <% end %>
+          <%= link_to company.name, company_path(company) %>
+        </h2>
+        <p>
+          <a class="btn btn-default" 
+          <%= link_to "+ #{company.name}", company_path(company) %> 
+        </a>
+      </p>
+    </div>
     <% end %>
-      
-      <% @categories.each do |category| %>
-        <%= link_to category.name, category_path(category) %>
-      <% end %>
-      
+    </div>
+  </div>
+</div>
+<div class="container">
+  <h2>Ou escolha uma categoria.</h2>
+  <h4>Não encontrou uma, basta cadastrar, que assim que houver uma vaga você será notificado!</h4>
+  <p>
+    <a class="btn btn-default" 
+      <%= link_to 'Criar Categoria', new_category_path %> 
+    </a>
+  <div class="row">
+    <% @categories.each do |category| %>
+    <a class="btn btn-success    btn-lg" 
+      <%= link_to category.name, category_path(category) %>
+    </a>
+    <% end %>
   </div>
 </div>

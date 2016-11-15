@@ -1,3 +1,3 @@
 <h1><%= @category.name %></h1>
-
-<%= render(@category.jobs)  || 'Nenhuma vaga disponível' %>
+<%= render(@category.jobs)  || 'Nenhuma vaga disponível' %><br>
+<%= link_to 'Voltar', root_path %>

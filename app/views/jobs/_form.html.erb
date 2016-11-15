@@ -11,13 +11,13 @@
     <%= f.label :category_id, "Categoria:" %>
     <%= f.collection_select :category_id, 
       @categories, :id, :name %>
-      <a href="/categories/new">Nova Categoria</a>
+      <a <%= link_to 'Nova Categoria', new_category_path %></a>
   </div>  
   <div class="form-group">  
     <%= f.label :company_id, "Empresa" %>
     <%= f.collection_select :company_id, 
       @companies, :id, :name %>
-      <a href="/companies/new">Nova Empresa</a>
+      <a <%= link_to 'Nova Empresa', new_company_path %></a>
   </div>  
   <div class="form-group">  
     <%= f.label :description, "Descrição:" %>
