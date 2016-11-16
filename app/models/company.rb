@@ -1,10 +1,12 @@
 class Company < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
   validates :name, 
   			:location,
   			:mail,
   			:phone,
-  			presence: 
-					{message: 'Nome não pode ser vazio!'}
+  			presence: {message: 'Nome não pode ser vazio!'}
 
   validates :name,
   	uniqueness: 
