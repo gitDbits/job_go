@@ -1,12 +1,12 @@
 class CategoriesController < ApplicationController
-  before_action :set_categories, only: [:show, 
-                                        :edit, 
+  before_action :set_categories, only: [:show,
+                                        :edit,
                                         :update]
 
   def new
     @category = Category.new
   end
-  
+
   def create
     @category = Category.new(category_params)
     if @category.save
@@ -34,11 +34,11 @@ class CategoriesController < ApplicationController
 
   private
 
-    def category_params
-      params.require(:category).permit(:name)
-    end
+  def category_params
+    params.require(:category).permit(:name)
+  end
 
-    def set_categories
-      @category = Category.friendly.find(params[:id])
-    end
+  def set_categories
+    @category = Category.friendly.find(params[:id])
+  end
 end

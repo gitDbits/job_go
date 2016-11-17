@@ -11,28 +11,35 @@
     <p>
       <a class="btn btn-lg btn-primary" 
       <%= link_to 'Criar Vaga', new_job_path %>
-    </a>
-  </p>
-</div>
+      </a>
+    </p>
+  </div>
 </div>
 <div class="container">
   <div class="row">
-    <% @jobs.each do |job| %>
-    <% unless job.expired? %>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h1><%= link_to job.title, job %></h1>
-          <p><%= job.company.name %></p>
-          <p><%= job.location %></p>
-          <% if job.featured? %>
-          <p><strong>Destaque</strong></p>
+    <section id="jobs">
+      <div class="job">
+        <% @jobs.each do |job| %>
+          <% unless job.expired? %>
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h1><%= link_to job.title, job %></h1>
+                <p><%= job.company.name %></p>
+                <p><%= job.location %></p>
+                <% if job.recent? %>
+                  <p>Novidade</p>
+                <% end %>
+                <% if job.featured? %>
+                <p><strong>Destaque</strong></p>
+                <% end %>
+              </div>
+            </div>
+          </div>
           <% end %>
-        </div>
+        <% end %>
       </div>
-    </div>
-    <% end %>
-    <% end %>
+    </section>
   </div>
   <div class="jumbotron">
     <div class="container" align="left">
@@ -43,7 +50,8 @@
         estará pronta para o JobGO!
       </p>
       <p>
-        <a class="btn btn-primary btn-lg"<%=  link_to 'Criar Empresa', new_company_path %></a>
+        <a class="btn btn-primary btn-lg"
+        <%=  link_to 'Criar Empresa', new_company_path %></a>
       </p>
       <p align="center">Abaixo a lista das empresas participantes!</p>
     </div>
@@ -65,21 +73,24 @@
       </p>
     </div>
     <% end %>
-    </div>
   </div>
+</div>
 </div>
 <div class="container">
   <h2>Ou escolha uma categoria.</h2>
-  <h4>Não encontrou uma, basta cadastrar, que assim que houver uma vaga você será notificado!</h4>
+  <h4>
+    Não encontrou uma, basta cadastrar, 
+    que assim que houver uma vaga você será notificado!
+  </h4>
   <p>
     <a class="btn btn-default" 
-      <%= link_to 'Criar Categoria', new_category_path %> 
-    </a>
+    <%= link_to 'Criar Categoria', new_category_path %> 
+  </a>
   <div class="row">
     <% @categories.each do |category| %>
     <a class="btn btn-success    btn-lg" 
-      <%= link_to category.name, category_path(category) %>
-    </a>
-    <% end %>
+    <%= link_to category.name, category_path(category) %>
+  </a>
+  <% end %>
   </div>
 </div>

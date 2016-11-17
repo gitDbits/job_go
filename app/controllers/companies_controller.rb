@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_companies, only: [:show, 
+  before_action :set_companies, only: [:show,
                                       :edit,
                                       :update]
   def new
@@ -33,11 +33,11 @@ class CompaniesController < ApplicationController
 
   private
 
-    def company_params
-      params.require(:company).permit(:name, :location,:mail,:phone)
-    end
+  def company_params
+    params.require(:company).permit(:name, :location, :mail, :phone)
+  end
 
-    def set_companies
-      @company = Company.friendly.find(params[:id])  
-    end
+  def set_companies
+    @company = Company.friendly.find(params[:id])
+  end
 end

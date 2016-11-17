@@ -1,10 +1,10 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [ :show, 
-                                  :edit, 
-                                  :update]
-  before_action :set_references, only: [:new, 
+  before_action :set_job, only: [:show,
+                                 :edit,
+                                 :update]
+  before_action :set_references, only: [:new,
                                         :update,
-                                        :create, 
+                                        :create,
                                         :edit]
 
   def new
@@ -39,21 +39,21 @@ class JobsController < ApplicationController
 
   private
 
-    def job_params
-      params.require(:job).permit( :title,
-                                   :location,
-                                   :category_id,
-                                   :company_id,
-                                   :description,
-                                   :featured)
-    end
+  def job_params
+    params.require(:job).permit(:title,
+                                :location,
+                                :category_id,
+                                :company_id,
+                                :description,
+                                :featured)
+  end
 
-    def set_job
-        @job = Job.friendly.find(params[:id])
-    end
+  def set_job
+    @job = Job.friendly.find(params[:id])
+  end
 
-    def set_references
-      @companies = Company.all
-      @categories = Category.all
-    end
+  def set_references
+    @companies = Company.all
+    @categories = Category.all
+  end
 end
