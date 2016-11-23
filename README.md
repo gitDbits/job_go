@@ -1,24 +1,5 @@
-# README
+# JOB Go!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project development in Campus Code bootcamp. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+click on: https://jobgo.herokuapp.com/
