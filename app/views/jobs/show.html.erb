@@ -1,2 +1,25 @@
-<%= render @job %>
-<%= link_to 'Voltar', root_path %>
+<div class="card">
+  <div class="card-header bg-default">
+    <strong class="">Detalhes da vaga</strong>
+  </div>
+  <div class="card-body" align="center">
+    <p>Título: </p><h1><%= @job.title %></h1>
+
+    <hr>
+
+    <strong>Descrição:</strong>  <%= @job.description %><br><br>
+    <strong>Localização:</strong> <%= @job.location %><br><br>
+    <strong>Criado em:</strong> <%= person_date @job.created_at %><br><br>
+    <strong>Empresa:</strong> <%= @job.company.name %><br><br>
+    <strong>Categoria:</strong> <%= @job.category.name %><br><br>
+    <% if @job.featured == true %>
+    <strong>Vaga em destaque:</strong><br>
+      <i class=" fa fa-star fa-2x text-warning" ></i>
+      <br><br>
+    <% end %>
+    <%= link_to root_path, class: "btn btn-primary " do %>
+      <i class="fa fa-arrow-left"></i>
+      VOLTAR
+    <% end %>
+  </div>
+</div>

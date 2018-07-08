@@ -1,19 +1,76 @@
-<%= form_for @company do |f| %>
-	<div class="form-group">
-		<%= f.label :name, "Nome:" %>
-		<%= f.text_field :name %>
+<div class="card">
+	<% if current_page?(new_company_path) %>
+	<div class="card-header">
+		<strong>Criar nova empresa</strong>
 	</div>
-	<div class="form-group">
-		<%= f.label :location, "Local:" %>
-		<%= f.text_field :location %>
+	<% else %>
+		<div class="card-header">
+			<strong>Editar vaga</strong>
+		</div>
+	<% end %>
+
+	<div class="card-body" align="center">
+		<%= form_for @company do |f| %>
+		<div class="row col-md-6 mb-3">
+			<strong>
+				<%= f.label :name do %>
+				<i class="fa fa-user"></i>
+				Nome
+				<% end %>
+			</strong>
+			<%= f.text_field :name, class: "form-control", required: true, autofocus: true %>
+		</div>
+
+		<div class="row col-md-6 mb-3">
+			<strong>
+				<%= f.label :location do %>
+				<i class="fas fa-map-marker-alt"></i>
+				Localização
+				<% end %>
+			</strong>
+			<%= f.text_field :location, class: "form-control", required: true %>
+		</div>
+
+		<div class="row col-md-6 mb-3">
+			<strong>
+				<%= f.label :mail do %>
+				<i class="fa fa-envelope"></i>
+				E-mail
+				<% end %>
+			</strong>
+			<%= f.email_field :mail, class: "form-control", required: true %>
+		</div>
+
+		<div class="row col-md-6 mb-3">
+			<strong>
+				<%= f.label :phone, "Nome" do %>
+				<i class="fa fa-phone"></i>
+				Telefone
+				<% end %>
+			</strong>
+			<%= f.text_field :phone, class: "form-control phone", required: true %>
+		</div>
+
+		<% if @company.new_record?  %>
+		<div class="col-md-6 mb-3">
+			<%= button_tag type: 'submit', class: "form-control btn btn-success" do %>
+				<i class="fa fa-plus"></i>
+				CRIAR
+			<% end %><br><br>
+		</div>
+		<% else %>
+			<div class="col-md-6 mb-3">
+				<%= button_tag type: 'submit', class: "form-control btn btn-warning" do %>
+					<i class="fa fa-edit"></i>
+					ATUALIZAR VAGA
+				<% end %><br><br>
+			</div>
+		<% end %>
+
+		<%= link_to root_path, class: 'btn btn-primary' do %>
+			<i class="fa fa-arrow-left"></i>
+			VOLTAR
+		<% end %>
+	<% end %>
 	</div>
-	<div class="form-group">
-		<%= f.label :mail, "Email:" %>
-		<%= f.text_field :mail %>
-	</div>
-	<div class="form-group">
-		<%= f.label :phone, "Telefone:" %>
-		<%= f.text_area :phone %>
-	</div>
-  	<%= f.submit submit_button %>
-<% end  %>
+</div>

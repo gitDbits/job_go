@@ -9,9 +9,9 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
-      redirect_to @company
+      redirect_to @company, success: "Empresa cadastrada com sucesso :)"
     else
-      flash.now[:error] = 'Erro ao salvar :('
+      flash[:warning] = "Essa empresa já existe."
       render :new
     end
   end

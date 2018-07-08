@@ -1,12 +1,1 @@
-<% @company.errors.each do |v, m| %>
-  <%= m %>
-<% end %>
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h1>Nova Empresa</h1>
-  </div>
-  <div class="panel-body">
-    <%= render partial: 'form', locals: {submit_button: 'Criar Empresa'} %>    
-  </div>
-</div>
-<%= link_to 'Voltar', root_path %>
+<%= render partial: 'form', locals: {submit_button: 'Criar empresa'} %>    

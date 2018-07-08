@@ -1,31 +1,92 @@
-<%= form_for @job do |f| %>
-  <div class="form-group">
-    <%= f.label :title, "Título:" %>
-    <%= f.text_field :title %>
+  <div class="card">
+    <% if current_page?(new_job_path) %>
+    <div class="card-header">
+      <strong>Criar nova vaga</strong>
+    </div>
+    <% else %>
+    <div class="card-header">
+      <strong>Editar vaga</strong>
+    </div>
+    <% end %>
+
+    <div class="card-body" align="center">
+        <%= form_for @job do |f| %>
+          <div class="row col-md-6 mb-3">
+            <strong>
+      				<%= f.label :title do %>
+      				<i class="fas fa-clipboard-list"></i>
+      				Nome
+      				<% end %>
+      			</strong>
+            <%= f.text_field :title, class:"form-control", required: true, autofocus:true %>
+          </div>
+          <div class="row col-md-6 mb-3">
+            <strong>
+      				<%= f.label :location do %>
+      				<i class="fas fa-map-marker-alt"></i>
+      				Localização
+      				<% end %>
+      			</strong>
+            <%= f.text_field :location, class:"form-control", required: true %>
+          </div>
+          <div class="row col-md-6 mb-3">
+            <strong>
+      				<%= f.label :category_id do %>
+      				<i class="fas fa-tags"></i>
+      				Categoria
+      				<% end %>
+      			</strong>
+            <%= f.select :category_id,
+              options_from_collection_for_select(Category.order(:name).all,
+              :id, :name, @job.category_id), {:include_blank => 'Escolha a categoria'},
+              { class: 'form-control', style: 'text-transform: uppercase'} %>
+          </div>
+          <div class="row col-md-6 mb-3">
+            <strong>
+      				<%= f.label :company_id do %>
+      				<i class="fas fa-building"></i>
+      				Empresa
+      				<% end %>
+      			</strong>
+            <%= f.select :company_id,
+              options_from_collection_for_select(Company.order(:name).all,
+              :id, :name, @job.company_id), {:include_blank => 'Escolha a empresa'},
+              {class: 'form-control', style: 'text-transform: uppercase'} %>
+          </div>
+          <div class="row col-md-6 mb-3">
+            <strong>
+      				<%= f.label :description do %>
+      				<i class="fas fa-info-circle"></i>
+      				Descrição
+      				<% end %>
+      			</strong>
+            <%= f.text_area :description, size: "60x5", class: "form-control", required: true %>
+          </div>
+          <div class="row col-md-6 mb-3">
+            <%= f.check_box :featured %>
+            <%= f.label :featured, "Vaga em destaque?", class: "form-check-label" %>
+          </div>
+
+          <% if @job.new_record?  %>
+          <div class="col-md-6 mb-3">
+            <%= button_tag type: 'submit', class: "form-control btn btn-success" do %>
+              <i class="fa fa-plus"></i>
+              CRIAR
+            <% end %><br><br>
+          </div>
+          <% else %>
+            <div class="col-md-6 mb-3">
+              <%= button_tag type: 'submit', class: "form-control btn btn-warning" do %>
+                <i class="fa fa-edit"></i>
+                ATUALIZAR VAGA
+              <% end %><br><br>
+            </div>
+          <% end %>
+
+          <%= link_to root_path, class: 'btn btn-primary' do %>
+            <i class="fa fa-arrow-left"></i>
+            VOLTAR
+          <% end %>
+        <% end %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :location, "Local:" %>
-    <%= f.text_field :location %>
-  </div>
-  <div class="form-group">
-    <%= f.label :category_id, "Categoria:" %>
-    <%= f.collection_select :category_id, 
-      @categories, :id, :name %>
-      <a <%= link_to 'Nova Categoria', new_category_path %></a>
-  </div>  
-  <div class="form-group">  
-    <%= f.label :company_id, "Empresa" %>
-    <%= f.collection_select :company_id, 
-      @companies, :id, :name %>
-      <a <%= link_to 'Nova Empresa', new_company_path %></a>
-  </div>  
-  <div class="form-group">  
-    <%= f.label :description, "Descrição:" %>
-    <%= f.text_area :description %>
-  </div>
-  <div class="form-group">
-    <%= f.label :featured, "Destaque" %>
-    <%= f.check_box :featured %>
-  </div>
-  <%= f.submit submit_button %>
-<% end %>

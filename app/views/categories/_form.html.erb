@@ -1,8 +1,46 @@
-<%= form_for @category do |f| %>
-<div class="form-group">
-	<%= f.label :name, 'Nome:' %>
-	<%= f.text_field :name %>
-</div>
-<%= f.submit submit_button %>
-<% end %>
+<div class="card">
+	<% if current_page?(new_category_path) %>
+		<div class="card-header">
+			<strong>Criar nova categoria</strong>
+		</div>
+	<% else %>
+		<div class="card-header">
+			<strong>Editar vaga</strong>
+		</div>
+	<% end %>
 
+	<div class="card-body" align="center">
+			<%= form_for @category do |f| %>
+				<div class="row col-md-6 mb-3">
+					<strong>
+						<%= f.label :name do %>
+						<i class="fa fa-user"></i>
+						Nome
+						<% end %>
+					</strong>
+					<%= f.text_field :name, class:"form-control", required: true, autofocus:true %>
+				</div>
+
+				<% if @category.new_record?  %>
+				<div class="col-md-6 mb-3">
+					<%= button_tag type: 'submit', class: "form-control btn btn-success" do %>
+						<i class="fa fa-plus"></i>
+						CRIAR
+					<% end %><br><br>
+				</div>
+				<% else %>
+					<div class="col-md-6 mb-3">
+						<%= button_tag type: 'submit', class: "form-control btn btn-warning" do %>
+							<i class="fa fa-edit"></i>
+							ATUALIZAR VAGA
+						<% end %><br><br>
+					</div>
+				<% end %>
+
+				<%= link_to root_path, class: 'btn btn-primary' do %>
+					<i class="fa fa-arrow-left"></i>
+					VOLTAR
+				<% end %>
+			<% end %>
+	</div>
+</div>

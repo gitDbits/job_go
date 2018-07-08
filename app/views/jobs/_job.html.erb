@@ -1,14 +1,39 @@
-<h1><%= job.title %></h1>
-<hr>
-  <p><%= job.category.name %></p>
-  <p><%= job.company.name %></p>
-  <p><%= job.location %></p>
-  <p><%= job.description %></p>
-<% if job.featured? %>
-  <p><strong>Destaque</strong></p>
-<% end %>
-<% if job.expired? %>
-  <p>Vaga Expirada</p>
-<% end %>
-
-
+<div class="col-md-4">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+      <h4 class="my-0 font-weight-normal"><%= job.title %></h4>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title pricing-card-title"><small class="text-muted"><i class="fas fa-clipboard-list"></i> <%= job.description %></small></h3>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li><%= job.location %></li>
+          <% if job.recent? %>
+            <li>Vaga recente: <%= person_date job.created_at %></li>
+          <% else %>
+            <li>Vaga com mais de 5 dias: <%= person_date job_created_at %></li>
+          <% end %>
+            <li>Categoria: <%= job.category.name %></li>
+          <% if job.featured? %>
+          <li><i class="fa fa-star fa-2x text-warning"></i></li>
+          <% else  %>
+          <li><i class="fa fa-briefcase fa-2x text-primary"></i></li>
+          <% end %>
+        </ul>
+        <%= link_to job_path(job), class: "btn btn-outline-success" do %>
+          <i class="fas fa-binoculars"></i>
+          VER DETALHES
+        <% end %><br>
+        <br>
+        <%= link_to edit_job_path(job), class: "btn btn-outline-warning" do %>
+          <i class="fa fa-edit"></i>
+          EDITAR
+        <% end %>
+        <%= link_to job_path(job), class: "btn btn-outline-danger", method: :delete, data: { confirm: "Você tem certeza que deseja excluir essa vaga? :|" } do %>
+          <i class="far fa-trash-alt"></i>
+          DELETAR
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

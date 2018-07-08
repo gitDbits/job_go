@@ -1,42 +1,44 @@
-require 'rails_helper'
+require "rails_helper"
 
-feature 'User create category' do
-  scenario 'successfully' do
-    category = Category.new(name: 'Desenvolvedor')
+feature "User create category" do
+
+  scenario "with valid details" do
+    category = Category.new(name: "Back end Ruby on Rails")
 
     visit new_category_path
 
-    fill_in 'Nome', with: category.name
+    fill_in "Nome", with: category.name
 
-    click_on 'Criar Categoria'
+    click_on "CRIAR"
 
-    expect(page).to have_css('h1', text: category.name)
+    expect(page).to have_content("Categoria #{category.name} não possui vagas.")
   end
 
-  context 'unsuccessfully' do
-    scenario 'with blank name' do
-      category = Category.create(name: 'Desenvolvedor')
+  context "with invalid details" do
+
+    scenario "blank name" do
+      category = Category.create(name: "Desenvolvedor")
 
       visit new_category_path
 
-      fill_in 'Nome', with: ''
+      fill_in "Nome", with: ""
 
-      click_on 'Criar Categoria'
+      click_on "CRIAR"
 
-      expect(page).to have_content('Nome não pode ser vazio!')
+      expect(page).to have_no_content(category.name)
     end
 
-    scenario 'with duplicate name' do
+    scenario "duplicate name" do
 
-      category = Category.create(name: 'Desenvolvedor')
+      category = Category.create(name: "Desenvolvedor")
 
       visit new_category_path
 
-      fill_in 'Nome', with: category.name
+      fill_in "Nome", with: category.name
 
-      click_on 'Criar Categoria'
+      click_on "CRIAR"
 
-      expect(page).to have_content('Essa categoria já existe!')
+      expect(page).to have_content("Essa categoria já existe.")
     end
   end
 end

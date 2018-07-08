@@ -9,8 +9,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'friendly_id', '~> 5.1.0'
 gem 'rubocop', require: false
-gem 'simple_form'
 gem 'nokogiri', '~> 1.8.1'
+gem 'jquery_mask_rails', '~> 0.1.0'
 
 group :development, :test do
   gem 'sqlite3'

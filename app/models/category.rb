@@ -4,7 +4,5 @@ class Category < ApplicationRecord
 
   has_many :jobs
 
-  validates :name,
-  					presence: { message: 'Nome não pode ser vazio!' },
-    				uniqueness: { message: 'Essa categoria já existe!' }
+  validates :name, uniqueness: {}
 end

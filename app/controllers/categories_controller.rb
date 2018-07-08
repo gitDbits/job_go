@@ -10,9 +10,9 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to @category
+      redirect_to @category, success: "Categoria cadastrada com sucesso :)"
     else
-      flash.now[:error] = 'Erro ao salvar :('
+      flash[:warning] = "Essa categoria já existe."
       render :new
     end
   end
@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
       redirect_to @category
     else
       flash.now[:error] = 'Erro ao salvar :('
-      render :edit
+      render :edit, danger: 'Não foi possível atualizar a vaga'
     end
   end
 

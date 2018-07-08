@@ -1,10 +1,32 @@
-<h1><%= @company.name %></h1>
-<hr>
-	<p>Local:<%= @company.location%></p>
-	<p>Email:<%= @company.mail %></p>
-	<p>Telefone:<%= @company.phone %></p>
-	<% if @company.premium? %>
-		<%= image_tag 'estrela.png'%>
-	<% end %>
-<%= render(@company.jobs) || 'Nenhuma vaga disponível'%>
-<%= link_to 'Voltar', root_path %>
+<% if @company.jobs.exists?  %>
+
+  <h3>Lista de vagas <strong><%= @company.name %></strong></h3>
+    <div class="row">
+      <%= render(@company.jobs) %>
+    </div>
+
+    <div class="row col-md-6 mb-3" align="center">
+      <%= link_to root_path, class: "btn btn-primary" do %>
+        <i class="fa fa-arrow-left"></i>
+        VOLTAR
+      <% end %>
+    </div>
+<% else %>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <i class="far fa-frown"></i> Empresa <strong><%= @company.name %></strong> não possui nenhuma vaga.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <%= link_to new_job_path, class: "btn btn-success" do %>
+    <i class="fa fa-plus"></i>
+    Criar vaga
+  <% end %><br><br>
+
+  <div class="row col-md-6 mb-3" align="center">
+    <%= link_to root_path, class: "btn btn-primary" do %>
+      <i class="fa fa-arrow-left"></i>
+      VOLTAR
+    <% end %>
+  </div>
+<% end %>

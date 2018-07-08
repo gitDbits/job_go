@@ -1,12 +1,1 @@
-<% @category.errors.each do |v, m| %>
-  <%= m %>
-<% end %>
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h1>Nova Categoria</h1>
-  </div>
-  <div class="panel-body">
-    <%= render partial: 'form', locals: { submit_button: 'Atualizar Categoria' } %>
-  </div>
-</div>
-<%= link_to 'Voltar', root_path %>
+<%= render partial: 'form', locals: {submit_button: 'Atualizar Categoria' } %>

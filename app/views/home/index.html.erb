@@ -1,96 +1,171 @@
-<div class=container>
+<div class="container">
   <div class=jumbotrom align="center">
-    <a href="http://imgur.com/gsXlKhM">
-      <img src="http://i.imgur.com/gsXlKhM.png" 
-      title="source: imgur.com"/>
-    </a>
     <h1>Afim de uma vaga?</h1>
-    <p class="lead">
-      Encontre a sua vaga na Job GO! 
-    </p>
-    <p>
-      <a class="btn btn-lg btn-primary" 
-      <%= link_to 'Criar Vaga', new_job_path %>
-      </a>
-    </p>
+    <p> Encontre a sua vaga na Job GO!</p>
+    <%= link_to 'Criar Vaga', new_job_path, class: 'btn btn-primary' %>
   </div>
 </div>
+<br>
 <div class="container">
+  <% unless @jobs.exists? %>
+  <div class="alert alert-warning" role="alert" align="center">
+    <i class="far fa-frown"></i> Nenhuma vaga disponível
+  </div>
+  <% else %>
   <div class="row">
-    <section id="jobs">
-      <div class="job">
-        <% @jobs.each do |job| %>
-          <% unless job.expired? %>
-          <div class="col-md-4">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h1><%= link_to job.title, job %></h1>
-                <p><%= job.company.name %></p>
-                <p><%= job.location %></p>
+    <% @jobs.each do |job| %>
+    <% unless job.expired? %>
+    <div class="col-md-4">
+      <div class="card-deck mb-3 text-center">
+          <div class="card mb-4 box-shadow">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal"><%= job.title %></h4>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title pricing-card-title"><small class="text-muted"><i class="fas fa-clipboard-list"></i> <%= job.description %></small></h3>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li><i class="fas fa-map-marker-alt"></i> <%= job.location %></li>
                 <% if job.recent? %>
-                  <p>Novidade</p>
+                  <li><i class="far fa-calendar-alt"></i> Vaga recente: <%= person_date job.created_at %></li>
+                <% else %>
+                  <li>
+                    <i class="far fa-calendar-alt"></i> Vaga com mais de 5 dias: <%= person_date job.created_at %>
+                  </li>
                 <% end %>
+                <li><i class="fa fa-tag"></i> Categoria: <%= job.category.name %></li>
+                <li><i class="far fa-building"></i> Empresa: <%= job.company.name %><li>
                 <% if job.featured? %>
-                <p><strong>Destaque</strong></p>
+                <li><i class="fa fa-star fa-2x text-warning"></i></li>
+                <% else  %>
+                <li><i class="fa fa-briefcase fa-2x text-primary"></i></li>
                 <% end %>
-              </div>
+              </ul>
+              <%= link_to job_path(job), class: "btn btn-outline-success" do %>
+                <i class="fas fa-binoculars"></i>
+                VER DETALHES
+              <% end %>
+              <br>
+              <br>
+              <%= link_to edit_job_path(job), class: "btn btn-outline-warning" do %>
+                <i class="fa fa-edit"></i>
+                EDITAR
+              <% end %>
+              <%= link_to job_path(job), class: "btn btn-outline-danger", method: :delete, data: { confirm: "Você tem certeza que deseja excluir essa vaga? :|" } do %>
+                <i class="far fa-trash-alt"></i>
+                DELETAR
+              <% end %>
             </div>
           </div>
-          <% end %>
-        <% end %>
       </div>
-    </section>
+    </div>
+    <% end %>
+    <% end %>
   </div>
-  <div class="jumbotron">
-    <div class="container" align="left">
-      <h1>Inscreva a sua empresa</h1>
-      <p> Seja o nosso parceiro, os melhores profissionais 
-        estão a um clique de encontrar a sua vaga. 
-        Com apenas algumas informações a sua empresa 
+  <% end %>
+</div>
+  <div class="jumbotron" align="center">
+    <div class="container">
+      <i class="far fa-building fa-4x"></i>
+      <h1>Cadastre a sua empresa</h1>
+      <p>
+        Seja o nosso parceiro, os melhores profissionais
+        estão a um clique de encontrar a sua vaga.
+        Com apenas algumas informações a sua empresa
         estará pronta para o JobGO!
       </p>
       <p>
-        <a class="btn btn-primary btn-lg"
-        <%=  link_to 'Criar Empresa', new_company_path %></a>
+        <%= link_to 'Criar Empresa', new_company_path, class: "btn btn-success" %></a>
       </p>
       <p align="center">Abaixo a lista das empresas participantes!</p>
+
+      <% unless @companies.exists? %>
+      <div class="alert alert-warning" role="alert" align="center">
+        <i class="far fa-frown"></i> Nenhuma empresa cadastrada
+      </div>
+      <% else %>
+      <div class="row">
+        <% @companies.each do |company| %>
+        <div class="col-md-4">
+          <div class="card-deck mb-3 text-center">
+              <div class="card mb-4 style="max-width: 18rem;"">
+                <div class="card-header">
+                  <h4 class="my-0 font-weight-normal"><%= company.name %></h4>
+                </div>
+                <div class="card-body text-dark">
+                  <h4 class="card-title pricing-card-title">
+                    <small class="text-muted"><i class="fa fa-envelope"></i>
+                      <%= company.mail %>
+                    </small>
+                  </h4>
+                  <h4 class="card-title pricing-card-title">
+                    <small class="text-muted">
+                      <i class="fa fa-phone"></i>  <%= company.phone %>
+                    </small>
+                  </h4>
+                  <h4 class="card-title pricing-card-title">
+                    <small class="text-muted">
+                      <i class="fa fa-map-marker-alt"></i>
+                      <%= company.location %>
+                    </small>
+                  </h4>
+                  <ul class="list-unstyled mt-3 mb-4">
+                    <li>
+                    <% if company.premium? %>
+                      <%= image_tag('estrela.png', alt: 'premium') %>
+                    <% end %>
+                    </li>
+                    <br>
+                    <li>
+                      <i class="far fa-hand-point-down fa-2x"></i>
+                      Confira abaixo as vagas desta empresa
+                    </li>
+                    <br>
+                    <li>
+                      <%= link_to "Vamos lá",
+                        company_path(company),
+                        class: "btn btn-lg btn-block btn-outline-danger" %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <% @companies.each do |company| %>
-      <div class="col-md-4">
-        <h2>
-          <% if company.premium? %>
-          <%= image_tag('estrela.png', alt: 'premiun') %>
-          <% end %>
-          <%= link_to company.name, company_path(company) %>
-        </h2>
-        <p>
-          <a class="btn btn-default" 
-          <%= link_to "+ #{company.name}", company_path(company) %> 
-        </a>
-      </p>
-    </div>
-    <% end %>
-  </div>
 </div>
-</div>
-<div class="container">
+<div class="container" align="center">
   <h2>Ou escolha uma categoria.</h2>
-  <h4>
-    Não encontrou uma, basta cadastrar, 
-    que assim que houver uma vaga você será notificado!
-  </h4>
+
   <p>
-    <a class="btn btn-default" 
-    <%= link_to 'Criar Categoria', new_category_path %> 
-  </a>
-  <div class="row">
-    <% @categories.each do |category| %>
-    <a class="btn btn-success    btn-lg" 
-    <%= link_to category.name, category_path(category) %>
-  </a>
-  <% end %>
+    Não encontrou nenhuma, basta cadastrar, ou confira as <strong>vagas por categoria</strong>
+  </p>
+
+  <%= link_to 'Criar Categoria', new_category_path, class: "btn btn-info" %>
+  <br><br>
+
+  <div><i class="far fa-grin-beam fa-4x"></i></i></div>
+  <br>
+  <p><strong>Clique</strong> em uma <strong>categoria</strong> para conferir as vagas</p>
+  <br><br>
+
+  <% unless @categories.exists? %>
+  <div class="alert alert-warning" role="alert" align="center">
+    <i class="far fa-frown"></i> Nenhuma categoria cadastrada
   </div>
+  <% else %>
+  <% @categories.each do |category| %>
+    <%= link_to category.name, category_path(category), class: "btn btn-outline-success" %>
+  <% end %>
+  <% end %>
 </div>
+
+<br>
+
+<footer class="footer">
+  <div class="footer-copyright text-center text-black-50 py-3">2018:
+    <a class="dark-grey-text" href="http://diegonoronha.com.br/" target="_blank"> Feito com o <i class="fa fa-heart"></i> Diego Noronha</a>
+  </div>
+</footer>
