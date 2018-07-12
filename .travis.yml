@@ -1,0 +1,19 @@
+language: ruby
+rvm:
+  - 2.3.1
+before_script:
+  - bundle exec rails db:create
+  - bundle exec rails db:migrate
+script:
+  - bundle exec rspec spec
+notifications:
+  email:
+    recipients:
+      - dbs.noronha@gmail.com
+    on_success: always
+    on_failure: always
+deploy:
+  provider: heroku
+  api_key: 2f08bf1f-308b-4a82-b696-42327410d10e
+  app: jobgo
+  run: "rails db:migrate"
