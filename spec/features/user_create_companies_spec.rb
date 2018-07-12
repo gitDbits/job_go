@@ -9,10 +9,10 @@ feature 'User create companies' do
 
     visit new_company_path
 
-    fill_in 'Nome',      with: company.name
-    fill_in 'Localização',     with: company.location
-    fill_in 'E-mail',     with: company.mail
-    fill_in 'Telefone',  with: company.phone
+    fill_in 'Nome', with: company.name
+    fill_in 'Localização', with: company.location
+    fill_in 'E-mail', with: company.mail
+    fill_in 'Telefone', with: company.phone
 
     click_on 'CRIAR'
 
@@ -28,27 +28,25 @@ feature 'User create companies' do
 
       visit new_company_path
 
-      fill_in 'Nome',      with: ''
-      fill_in 'Localização',     with: company.location
-      fill_in 'E-mail',     with: company.mail
-      fill_in 'Telefone',  with: company.phone
+      fill_in 'Nome', with: ''
+      fill_in 'Localização', with: company.location
+      fill_in 'E-mail', with: company.mail
+      fill_in 'Telefone', with: company.phone
 
       click_on 'CRIAR'
 
       expect(page).to have_current_path companies_path
       expect(page).to have_no_content('Empresa cadastrada com sucesso :)')
-
     end
     scenario 'with duplicated name' do
       company = Company.create(name: 'Google')
 
       visit new_company_path
 
-      fill_in 'Nome',      with: company.name
-      fill_in 'Localização',     with: company.location
-      fill_in 'E-mail',     with: company.mail
-      fill_in 'Telefone',  with: company.phone
-
+      fill_in 'Nome', with: company.name
+      fill_in 'Localização', with: company.location
+      fill_in 'E-mail', with: company.mail
+      fill_in 'Telefone', with: company.phone
 
       click_on 'CRIAR'
 

@@ -17,7 +17,7 @@ class Job < ApplicationRecord
 
   def slug_candidates
     [
-      [:title, :company_id]
+      %i[title company_id]
     ]
   end
 end

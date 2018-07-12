@@ -1,12 +1,11 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [ :show,
-                                  :edit,
-                                  :update
-                                  ]
-  before_action :set_references, only: [:new,
-                                        :update,
-                                        :create,
-                                        :edit]
+  before_action :set_job, only: %i[show
+                                   edit
+                                   update]
+  before_action :set_references, only: %i[new
+                                          update
+                                          create
+                                          edit]
 
   def new
     @job = Job.new
@@ -15,24 +14,22 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     if @job.save
-      redirect_to @job, success: "Vaga cadastrada com sucesso :)"
+      redirect_to @job, success: 'Vaga cadastrada com sucesso :)'
     else
-      flash[:warning] = "Verifique se a categoria e a empresa estão selecionadas."
+      flash[:warning] = 'Verifique se a categoria e a empresa estão selecionadas.'
       render :new
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @job.update(job_params)
-      redirect_to @job, success: "Vaga alterada com sucesso :)"
+      redirect_to @job, success: 'Vaga alterada com sucesso :)'
     else
-      flash[:warning] = "Verifique se a categoria e a empresa estão selecionadas."
+      flash[:warning] = 'Verifique se a categoria e a empresa estão selecionadas.'
       render :edit
     end
   end
@@ -41,7 +38,7 @@ class JobsController < ApplicationController
     @job = Job.friendly.find(params[:id])
     @job.destroy
 
-    redirect_to root_path, danger: "Vaga excluída com sucesso :("
+    redirect_to root_path, danger: 'Vaga excluída com sucesso :('
   end
 
   private

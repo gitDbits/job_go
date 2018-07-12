@@ -6,7 +6,7 @@ class Company < ApplicationRecord
 
   validates :name, :location, :mail, :phone, presence: true
 
-  validates :name, uniqueness: { }
+  validates :name, uniqueness: {}
 
   def premium?
     jobs.count >= 5

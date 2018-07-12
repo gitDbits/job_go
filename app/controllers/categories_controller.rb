@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
-  before_action :set_categories, only: [:show,
-                                        :edit,
-                                        :update]
+  before_action :set_categories, only: %i[show
+                                          edit
+                                          update]
 
   def new
     @category = Category.new
@@ -10,18 +10,16 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to @category, success: "Categoria cadastrada com sucesso :)"
+      redirect_to @category, success: 'Categoria cadastrada com sucesso :)'
     else
-      flash[:warning] = "Essa categoria já existe."
+      flash[:warning] = 'Essa categoria já existe.'
       render :new
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @category.update(category_params)

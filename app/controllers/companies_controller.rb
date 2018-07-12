@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
-  before_action :set_companies, only: [:show,
-                                      :edit,
-                                      :update]
+  before_action :set_companies, only: %i[show
+                                         edit
+                                         update]
   def new
     @company = Company.new
   end
@@ -9,18 +9,16 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
-      redirect_to @company, success: "Empresa cadastrada com sucesso :)"
+      redirect_to @company, success: 'Empresa cadastrada com sucesso :)'
     else
-      flash[:warning] = "Essa empresa já existe."
+      flash[:warning] = 'Essa empresa já existe.'
       render :new
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @company.update(company_params)

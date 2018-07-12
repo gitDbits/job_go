@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Visitor view recent jobs' do
+feature 'View recent jobs' do
   scenario 'on home page' do
     company = Company.create(name:     'Campus Code',
                              location: 'São Paulo',
@@ -17,10 +17,7 @@ feature 'Visitor view recent jobs' do
 
     visit root_path
 
-    # primeira elemento com o css "jobs" da pagina
-    within('#jobs div.job:first-child') do
-      expect(page).to have_content('Novidade')
-    end
+    expect(page).to have_content('Novidade')
   end
 
   scenario 'only on recent jobs' do
@@ -37,7 +34,6 @@ feature 'Visitor view recent jobs' do
                  location: 'São Paulo',
                  company: company,
                  category: category)
-
     end
 
     visit root_path

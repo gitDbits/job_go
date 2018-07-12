@@ -26,6 +26,7 @@
               <ul class="list-unstyled mt-3 mb-4">
                 <li><i class="fas fa-map-marker-alt"></i> <%= job.location %></li>
                 <% if job.recent? %>
+                  <strong>Novidade</strong>
                   <li><i class="far fa-calendar-alt"></i> Vaga recente: <%= person_date job.created_at %></li>
                 <% else %>
                   <li>
@@ -111,7 +112,8 @@
                   <ul class="list-unstyled mt-3 mb-4">
                     <li>
                     <% if company.premium? %>
-                      <%= image_tag('estrela.png', alt: 'premium') %>
+                      <strong>Premium</strong>
+                      <i class="fa fa-star"></i>
                     <% end %>
                     </li>
                     <br>
