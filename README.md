@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/gitDbits/job_go.svg?branch=master)](https://travis-ci.org/gitDbits/job_go) [![Maintainability](https://api.codeclimate.com/v1/badges/9636fa9165d3c122b696/maintainability)](https://codeclimate.com/github/gitDbits/job_go/maintainability)
 
 Projeto desenvolvido no bootcamp da [Campus Code](https://campuscode.com.br/) em Ruby on Rails 5 com prática de TDD, permitindo ao usuário:
+
     * Cadastrar e editar empresas.
     * Cadastrar e editar categorias.
     * Cadastrar vagas de trabalho.
