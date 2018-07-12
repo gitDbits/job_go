@@ -1,7 +1,7 @@
 # Job GO!
 [![Build Status](https://travis-ci.org/gitDbits/job_go.svg?branch=master)](https://travis-ci.org/gitDbits/job_go) [![Maintainability](https://api.codeclimate.com/v1/badges/9636fa9165d3c122b696/maintainability)](https://codeclimate.com/github/gitDbits/job_go/maintainability)
 
-Projeto desenvolvido no bootcamp da [Campus Code](https://campuscode.com.br/) em Ruby on Rails 5 com prática de TDD, permitindo ao usuário:
+Projeto desenvolvido no bootcamp da [Campus Code](https://campuscode.com.br/){:target="_blank"} em Ruby on Rails 5 com prática de TDD, permitindo ao usuário:
 
     * Cadastrar e editar empresas.
     * Cadastrar e editar categorias.
@@ -45,10 +45,10 @@ Os 27 testes da aplicaçao encontra-se na pasta job_go/spec/features/
 
 ## Construido com
 
-* [Ruby on Rails](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Rspec](https://github.com/rspec/rspec) - Framework BDD
-* [Capybara](https://github.com/teamcapybara/capybara) - Helps you test web applications
-* [SimpleCov](https://github.com/colszowka/simplecov) - Code coverage analysis tool for Ruby
-* [Rubocop](https://github.com/rubocop-hq/rubocop) - A Ruby static code analyzer
-* [friendly_id](https://github.com/norman/friendly_id) - Create pretty URL’s and work with human-friendly
-* [Jquery mask rails](https://github.com/maurcarvalho/jquery_mask_rails) - A Rails gem of the jQuery Plugin mask
+* [Ruby on Rails](http://www.dropwizard.io/1.0.2/docs/){:target="_blank"} - The web framework used
+* [Rspec](https://github.com/rspec/rspec){:target="_blank"} - Framework BDD
+* [Capybara](https://github.com/teamcapybara/capybara){:target="_blank"} - Helps you test web applications
+* [SimpleCov](https://github.com/colszowka/simplecov){:target="_blank"} - Code coverage analysis tool for Ruby
+* [Rubocop](https://github.com/rubocop-hq/rubocop){:target="_blank"} - A Ruby static code analyzer
+* [friendly_id](https://github.com/norman/friendly_id){:target="_blank"} - Create pretty URL’s and work with human-friendly
+* [Jquery mask rails](https://github.com/maurcarvalho/jquery_mask_rails){:target="_blank"} - A Rails gem of the jQuery Plugin mask
