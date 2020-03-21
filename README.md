@@ -4,7 +4,7 @@
 
   
 
-![Screenshot](https://jobgo.herokuapp.com/screenshot.png)
+![Screenshot](https://i.imgur.com/J3FsQn4.png)
 
   
 
