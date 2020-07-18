@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/noronha/development/job_go/app/helpers/application_helper.rb": [
+      "/home/icarus/development/job_go/app/helpers/application_helper.rb": [
         1,
         null,
         1,
@@ -9,7 +9,7 @@
         null,
         null
       ],
-      "/home/noronha/development/job_go/app/models/category.rb": [
+      "/home/icarus/development/job_go/app/models/category.rb": [
         1,
         1,
         1,
@@ -19,12 +19,12 @@
         1,
         null
       ],
-      "/home/noronha/development/job_go/app/models/application_record.rb": [
+      "/home/icarus/development/job_go/app/models/application_record.rb": [
         1,
         1,
         null
       ],
-      "/home/noronha/development/job_go/app/controllers/categories_controller.rb": [
+      "/home/icarus/development/job_go/app/controllers/categories_controller.rb": [
         1,
         1,
         null,
@@ -68,7 +68,7 @@
         null,
         null
       ],
-      "/home/noronha/development/job_go/app/controllers/application_controller.rb": [
+      "/home/icarus/development/job_go/app/controllers/application_controller.rb": [
         1,
         1,
         null,
@@ -83,7 +83,7 @@
         null,
         null
       ],
-      "/home/noronha/development/job_go/app/models/job.rb": [
+      "/home/icarus/development/job_go/app/models/job.rb": [
         1,
         1,
         1,
@@ -102,13 +102,13 @@
         null,
         null,
         1,
-        null,
         48,
+        null,
         null,
         null,
         null
       ],
-      "/home/noronha/development/job_go/app/models/company.rb": [
+      "/home/icarus/development/job_go/app/models/company.rb": [
         1,
         1,
         1,
@@ -124,7 +124,7 @@
         null,
         null
       ],
-      "/home/noronha/development/job_go/app/controllers/companies_controller.rb": [
+      "/home/icarus/development/job_go/app/controllers/companies_controller.rb": [
         1,
         1,
         null,
@@ -167,7 +167,7 @@
         null,
         null
       ],
-      "/home/noronha/development/job_go/app/controllers/jobs_controller.rb": [
+      "/home/icarus/development/job_go/app/controllers/jobs_controller.rb": [
         1,
         1,
         null,
@@ -232,7 +232,7 @@
         null,
         null
       ],
-      "/home/noronha/development/job_go/app/controllers/home_controller.rb": [
+      "/home/icarus/development/job_go/app/controllers/home_controller.rb": [
         1,
         1,
         15,
@@ -241,29 +241,29 @@
         null,
         null
       ],
-      "/home/noronha/development/job_go/app/channels/application_cable/channel.rb": [
+      "/home/icarus/development/job_go/app/jobs/application_job.rb": [
+        0,
+        0
+      ],
+      "/home/icarus/development/job_go/app/channels/application_cable/connection.rb": [
         0,
         0,
         0,
         0
       ],
-      "/home/noronha/development/job_go/app/channels/application_cable/connection.rb": [
+      "/home/icarus/development/job_go/app/channels/application_cable/channel.rb": [
         0,
         0,
         0,
         0
       ],
-      "/home/noronha/development/job_go/app/mailers/application_mailer.rb": [
+      "/home/icarus/development/job_go/app/mailers/application_mailer.rb": [
         0,
         0,
-        0,
-        0
-      ],
-      "/home/noronha/development/job_go/app/jobs/application_job.rb": [
         0,
         0
       ]
     },
-    "timestamp": 1531397426
+    "timestamp": 1584796202
   }
 }

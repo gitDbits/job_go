@@ -1,16 +1,16 @@
-# Job GO! [Demo](https://jobgo.herokuapp.com/)
+
+![Screenshot](https://github.com/gitDbits/job_go/blob/master/public/logo_job_go.png?raw=true)
+
+# Confira a [Demo](https://jobgo.herokuapp.com/)
 
 [![Build Status](https://travis-ci.org/gitDbits/job_go.svg?branch=master)](https://travis-ci.org/gitDbits/job_go) [![Maintainability](https://api.codeclimate.com/v1/badges/9636fa9165d3c122b696/maintainability)](https://codeclimate.com/github/gitDbits/job_go/maintainability)
 
   
-
 ![Screenshot](https://i.imgur.com/J3FsQn4.png)
 
-  
 
 Projeto desenvolvido no bootcamp da [Campus Code](https://campuscode.com.br/) em Ruby on Rails 5 com prática de TDD, permitindo ao usuário:
 
-  
 
 * Cadastrar e editar empresas.
 
@@ -29,10 +29,8 @@ Projeto desenvolvido no bootcamp da [Campus Code](https://campuscode.com.br/) em
 * As vagas de trabalho expirão após 90 dias.
 
   
-
 Para maiores detalhes do projeto confira no meu [Blog](http://diegonoronha.com.br/) :)
 
-  
 
 ## Vamos lá
 
@@ -50,11 +48,9 @@ Verifique os requisitos abaixo, fique a vontade para realizar o clone do projeto
 
 ### Setup básico
 
-  
 
 Abra o seu terminal e execute os seguintes comandos:
 
-  
 
 ```
 
@@ -94,9 +90,8 @@ Os 27 testes da aplicaçao encontra-se na pasta job_go/spec/features/
 
 ## Construido com
 
-  
 
-*  [Ruby on Rails](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+*  [Ruby on Rails](https://guides.rubyonrails.org/) - The web framework used
 
 *  [Rspec](https://github.com/rspec/rspec) - Framework BDD
 
