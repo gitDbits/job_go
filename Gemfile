@@ -5,7 +5,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'jquery_mask_rails', '~> 0.1.0'
 gem 'nokogiri', '~> 1.8.1'
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 4.3'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'rubocop', require: false
 gem 'sass-rails', '~> 5.0'
